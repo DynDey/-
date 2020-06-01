@@ -1,0 +1,18 @@
+package com.company;
+public class Main{
+    public static void main(String[] args) {
+        System.out.println(isPrefix("automation","auto-"));
+        System.out.println(isSuffix("arachnophobia","-phobia"));
+        System.out.println(isPrefix("retrospect","sub-"));
+        System.out.println(isSuffix("vacation","-logy"));
+    }
+    //Метод endsWith() определяет, заканчивается ли строка символами другой строки
+    //Метод substring() возвращает подстроку строки между двумя индексами, или от одного индекса и до конца строки.
+    private static boolean isSuffix(String s1, String s2) {
+        return s1.endsWith(s2.substring(1));
+    }
+    //Метод endsWith() определяет, начинается ли строка символами другой строки,
+    private static boolean isPrefix(String s1, String s2) {
+        return s1.startsWith(s2.substring(0, s2.length()-2));
+    }
+}
