@@ -1,17 +1,23 @@
-public class task8 {
+public class task7 {
     public static void main(String[] args) {
-        System.out.println(doesRhyme("Sam I am!", "Green eggs and ham."));
+        System.out.println(toStarShorthand("abbccc"));
     }
 
-    public static boolean doesRhyme(String str1, String str2) {
-        str1 = str1.replaceAll("\\p{Punct}","");
-        str2 = str2.replaceAll("\\p{Punct}","");
-        char lastletter=str1.charAt(str1.length()-1);
-        char lastletter1=str2.charAt(str2.length()-1);
-
-        if (Character.toLowerCase(lastletter1)==Character.toLowerCase(lastletter))
-            return true;
-        else
-            return false;
+    public static String toStarShorthand(String input) {
+        String result = "";
+        int count = 1;
+        char currentChar = new Character('a');
+        for (int i = 1; i < input.length(); i++) {
+            currentChar = input.charAt(i - 1);
+            if (currentChar == input.charAt(i)) count++;
+            else {
+                if (count > 1) result += currentChar + "*" + count;
+                else result += currentChar;
+                count = 1;
+                if (i == input.length() - 1) result += String.valueOf(input.charAt(input.length() - 1));
+            }
+        }
+        if (count != 1) result += currentChar + "*" + count;
+        return result;
     }
 }
